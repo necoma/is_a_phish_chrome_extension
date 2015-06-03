@@ -1,0 +1,19 @@
+{
+    // 拡張機能の定義
+    "manifest_version": 2  // マニフェストのバージョン
+    , "name": "PhishingSiteBlocker without Eyebit technology"       // 拡張機能の名称
+    , "version": "0.1"       // 拡張機能のバージョン
+ 
+    , "description": "phishingと判定されるWebPageを開こうとした場合には警告を表示します。"  // 拡張機能の概要
+ 
+    // スクリプトの設定
+    , "content_scripts": [
+        {
+            "matches": ["http://*/*", "https://*/*", "file:///*"]  // 拡張機能を適用するURLパターン
+            , "js": ["jquery-2.1.0.min.js",
+		     "main.js"]
+	    , "all_frames": false // フレームがあってもそれにも適用する場合は true
+	    , "run_at": "document_end" // "document_start", "document_idle"(default), "document_end"
+        }
+    ]
+}
